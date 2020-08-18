@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import Team from "./components/Team";
+import TeamForm from "./components/TeamForm";
+
+const initialFormValues = {
+  name: "",
+  email: "",
+  role: "",
+};
 
 function App() {
   // const testData = [
@@ -11,23 +19,32 @@ function App() {
   //     role: "software dev",
   //   },
   // ];
-  const initialFormValues = {
-    name: "",
-    email: "",
-    role: "",
-  };
 
-  const [team, setTeam] = useState(initialFormValues);
+  const [team, setTeam] = useState([]);
+  const [formValues, setFormValues] = useState(initialFormValues);
   // console.log(team);
 
-  const updateTeam = (inputName, inputValue) => {
-    setTeam({ ...team, [inputName]: inputValue });
+  const updateForm = (inputName, inputValue) => {
+    setFormValues({ ...formValues, [inputName]: inputValue });
   };
-  console.log();
+  console.log(formValues);
+
+  const submitForm = () => {
+    const team = {
+      username: formValues.username.trim(),
+      email: formValues.email.trim(),
+      role: formValues.role,
+    };
+    if (!team.username || !team.email) return;
+  };
 
   return (
     <div className="App">
       <header className="App-header">
+        <TeamForm values={formValues} update={updateForm} submit={submitForm} />
+        {team.map((team) => {
+          return <Team key={team.id} details={team} />;
+        })}
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
