@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import {v4 as uuid} from "uuid";
 
 function App() {
+  // const testData = [
+  //   {
+  //     id: 0,
+  //     name: "Sha Adkins",
+  //     email: "boahs@boahs.info",
+  //     role: "software dev",
+  //   },
+  // ];
+  const initialFormValues = {
+    name: "",
+    email: "",
+    role: "",
+  };
 
-  const 
+  const [team, setTeam] = useState(initialFormValues);
+  // console.log(team);
+
+  const updateTeam = (inputName, inputValue) => {
+    setTeam({ ...team, [inputName]: inputValue });
+  };
+  console.log();
+
   return (
     <div className="App">
       <header className="App-header">
