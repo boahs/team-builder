@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { v4 as uuid } from "uuid";
 import TeamForm from "./components/TeamForm";
 import Team from "./components/Team";
+import { v4 as uuid } from "uuid";
 
 import "./App.css";
 
@@ -54,7 +54,7 @@ function App() {
         setTeamMembersList([...teamMembersList, res.data]);
       })
       .catch((err) => {
-        debugger;
+        console.log(err);
       })
       .finally(() => {
         setFormValues(initialFormValues);
