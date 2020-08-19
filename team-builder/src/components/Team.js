@@ -1,19 +1,17 @@
 import React from "react";
 
-const Team = (props) => {
+export default function TeamMembers(props) {
   const { details } = props;
 
   if (!details) {
-    return <h3>working on fetching your team&apos;s details...</h3>;
+    return <h3>Working fetching your Team Members&apos;s details...</h3>;
   }
 
   return (
-    <div className="team container">
-      <h2>{details.username}</h2>
+    <div className="Team Members container">
+      <h2>{details.name}</h2>
       <p>Email: {details.email}</p>
       <p>Role: {details.role}</p>
     </div>
   );
-};
-
-export default Team;
+}

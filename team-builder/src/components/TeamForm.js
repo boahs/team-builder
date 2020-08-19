@@ -1,66 +1,77 @@
 import React from "react";
+import styled from "styled-components";
 
-const TeamForm = (props) => {
+const Border = styled.div`
+  border-style: outset;
+  border-width: thick;
+  color: blue;
+`;
+
+export default function TeamForm(props) {
   const { values, update, submit } = props;
 
-  const onChange = (e) => {
-    const { name, value } = e.target;
+  const onChange = (evt) => {
+    const { name, value } = evt.target;
     update(name, value);
   };
-  const onSubmit = (e) => {
-    e.preventDefault();
+
+  const onSubmit = (evt) => {
+    evt.preventDefault();
     submit();
   };
+
   return (
     <form className="form container" onSubmit={onSubmit}>
-      <div className="form-group submit">
-        <button
-          disabled={
-            !values.username || !values.email || !values.role ? true : false
-          }
-        >
-          submit
-        </button>
-      </div>
-      <div className="form-group inputs">
-        <h4>General information</h4>
+      <Border>
+        <div className="form-group submit">
+          <h2>Add a Team Member</h2>
+          <button
+            disabled={
+              !values.name || !values.email || !values.role ? true : false
+            }
+          >
+            Submit
+          </button>
+        </div>
 
-        <label>
-          Username:&nbsp;
-          <input
-            value={values.username}
-            onChange={onChange}
-            name="username"
-            placeholder="type username"
-            maxLength="20"
-            type="text"
-          />
-        </label>
+        <div className="form-group inputs">
+          <h4>General Information</h4>
 
-        <label>
-          Email:&nbsp;
-          <input
-            value={values.email}
-            onChange={onChange}
-            name="email"
-            placeholder="type email"
-            maxLength="30"
-            type="email"
-          />
-        </label>
+          <label>
+            Name:&nbsp;
+            <input
+              value={values.name}
+              onChange={onChange}
+              name="name"
+              placeholder="type name"
+              maxLength="30"
+              type="text"
+            />
+          </label>
 
-        <label>
-          Role:&nbsp;
-          <select onChange={onChange} value={values.role} name="role">
-            <option value="">-- Select a Role --</option>
-            <option value="student">Student</option>
-            <option value="tl">Team Lead</option>
-            <option value="alumni">Alumni</option>
-          </select>
-        </label>
-      </div>
+          <label>
+            Email:&nbsp;
+            <input
+              value={values.email}
+              onChange={onChange}
+              name="email"
+              placeholder="type email"
+              maxLength="30"
+              type="email"
+            />
+          </label>
+
+          <label>
+            Role:&nbsp;
+            <select onChange={onChange} value={values.role} name="role">
+              <option value="">--Select a Role--</option>
+              <option value="tm">Team Member</option>
+              <option value="tl">Team Leader</option>
+              <option value="tm">Team Mentor</option>
+            </select>
+          </label>
+        </div>
+      </Border>
     </form>
   );
-};
-
-export default TeamForm;
+}
