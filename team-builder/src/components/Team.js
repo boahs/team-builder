@@ -1,11 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-const rand = "#" + Math.floor(Math.random() * 0xffffff).toString(16);
-console.log(rand);
+// const rand = "#" + Math.floor(Math.random() * 0xffffff).toString(16);
+// console.log(rand); // couldn't get it to loop with new entires oh well
 
 const StyledDiv = styled.div`
-  border: 3px solid ${rand};
+  border-style: outset;
+  border-width: 6px;
+  border-color: #355c7d;
+  background: #474747;
+  color: white;
 `;
 
 export default function TeamMembers(props) {

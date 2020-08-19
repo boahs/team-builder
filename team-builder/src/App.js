@@ -8,7 +8,7 @@ import "./App.css";
 const initialData = [
   {
     id: uuid(), // uuid is a lib to generate random, unique ids
-    username: "Sha",
+    name: "Sha",
     email: "boahs@boahs.info",
     role: "team member",
   },
@@ -67,8 +67,6 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">Team Member List</header>
-
       <TeamForm values={formValues} update={updateForm} submit={submitForm} />
 
       {teamMembersList.map((teamMember) => {
